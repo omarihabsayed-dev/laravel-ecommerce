@@ -3,6 +3,9 @@ $about = App\Models\About::first();
 @endphp
 @extends('frontend.main')
 @section('content')
+@section('title')
+About
+@endsection
 <main>
 
     <!-- breadcrumb-area -->

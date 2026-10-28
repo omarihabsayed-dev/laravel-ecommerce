@@ -14,9 +14,10 @@
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="{{ request()->is('/') ? 'active' : '' }}">
-                                        <a href="{{ url('/') }}">Home</a>
+                                    <li class="{{ request()->routeIs('home') ? 'active' : '' }}">
+                                        <a href="{{ route('home') }}">Home</a>
                                     </li>
+
 
                                     <li class="{{ request()->is('about') ? 'active' : '' }}">
                                         <a href="{{ route('about.show') }}">About</a>
@@ -28,11 +29,7 @@
 
                                     <li
                                         class="menu-item-has-children {{ request()->is('portfolio*') ? 'active' : '' }}">
-                                        <a href="#">Portfolio</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="portfolio.html">Portfolio</a></li>
-                                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                        </ul>
+                                        <a href="{{ route('portfolio.show') }}">Portfolio</a>
                                     </li>
 
                                     <li class="menu-item-has-children {{ request()->is('blog*') ? 'active' : '' }}">

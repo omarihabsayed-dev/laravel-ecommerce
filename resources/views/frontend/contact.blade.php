@@ -1,5 +1,8 @@
 @extends('frontend.main')
 @section('content')
+@section('title')
+Contact
+@endsection
 <main>
 
     <!-- breadcrumb-area -->

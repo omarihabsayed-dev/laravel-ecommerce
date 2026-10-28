@@ -1,5 +1,8 @@
 @extends('frontend.main')
 @section('content')
+@section('title')
+Rasalina | Personal Portfolio
+@endsection
 <!-- banner-area -->
 @include('frontend.home.slide')
 <!-- banner-area-end -->

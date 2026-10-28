@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -25,14 +25,18 @@ Route::middleware('auth')->group(function (): void {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function (): void {
-    Route::get('/logout', 'destroy')->name('logout');
-    Route::get('/profile', 'profile')->name('profile');
-    Route::get('/edit', 'edit')->name('edit');
-    Route::post('/edit', 'store')->name('store');
-    Route::get('/password', 'changePassword')->name('password');
-    Route::post('/password', 'updatePassword')->name('update.password');
-});
+Route::controller(AdminController::class)
+    ->prefix('admin')
+    ->name('admin.')
+    ->middleware('auth')
+    ->group(function (): void {
+        Route::get('/logout', 'destroy')->name('logout');
+        Route::get('/profile', 'profile')->name('profile');
+        Route::get('/edit', 'edit')->name('edit');
+        Route::post('/edit', 'store')->name('store');
+        Route::get('/password', 'changePassword')->name('password');
+        Route::post('/password', 'updatePassword')->name('update.password');
+    });
 
 Route::controller(HomeSlidesController::class)
     ->prefix('admin/home-slides')
